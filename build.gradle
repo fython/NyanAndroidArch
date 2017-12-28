@@ -1,0 +1,37 @@
+buildscript {
+	ext {
+		// Build configs
+		androidGradlePluginVersion = '3.0.1'
+		kotlinVersion = '1.2.10'
+		androidSupportLibVersion = '27.0.2'
+		minSdkVersion = 21
+		targetSdkVersion = 27
+
+		// Version
+		versionName = '0.1.0'
+		versionCode = 1
+
+		// Third-party libs version
+		fontProviderApiVersion = '10'
+	}
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
