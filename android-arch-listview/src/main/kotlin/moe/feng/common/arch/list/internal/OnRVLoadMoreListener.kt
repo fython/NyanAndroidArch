@@ -1,14 +1,15 @@
-package moe.feng.common.arch.list
+package moe.feng.common.arch.list.internal
 
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
+import moe.feng.common.arch.list.callback.OnListLoadMoreListener
 
 /**
  * A type of RecyclerView OnScrollListener help you to listen load more event
  */
-class OnLoadMoreListener(private val callback: OnLoadMoreListener.Callback)
+class OnRVLoadMoreListener(private val callback: OnListLoadMoreListener)
 	: RecyclerView.OnScrollListener() {
 
 	override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
@@ -42,14 +43,6 @@ class OnLoadMoreListener(private val callback: OnLoadMoreListener.Callback)
 				callback.onLoadMore()
 			}
 		}
-	}
-
-	interface Callback {
-		/**
-		 * When RecyclerView should load more contents (Whether or not there is more),
-		 * onLoadMore() will be called
-		 */
-		fun onLoadMore()
 	}
 
 }
