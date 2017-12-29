@@ -40,12 +40,21 @@
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/list_view"
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             bind:items="@{viewModel.listItems}"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:listSelector="@android:color/transparent"
+            android:divider="@null"
+            bind:items="@{viewModel.listItems}"/>
 
     </LinearLayout>
 </layout>

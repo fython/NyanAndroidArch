@@ -3,51 +3,19 @@ package moe.feng.common.arch.list
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
-import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.ViewGroup
 
 open class BindingRecyclerViewAdapter(private val variableId: Int)
-    : RecyclerView.Adapter<BindingRecyclerViewAdapter.BindingHolder<Any, ViewDataBinding>>() {
+    : RecyclerView.Adapter<BindingRecyclerViewAdapter.BindingHolder<Any, ViewDataBinding>>(), IBindingAdapter {
 
-    var data: MutableList<Any> = mutableListOf()
-
-    private val binders: MutableList<Pair<Class<*>, ItemBinder<*, *>>> = mutableListOf()
-
-    fun <T, DB: ViewDataBinding> bind(clazz: Class<T>, binder: ItemBinder<T, DB>)
-            : BindingRecyclerViewAdapter {
-        binders.add(clazz to binder)
-        return this
-    }
-
-    inline fun <reified T, DB: ViewDataBinding> bind(binder: ItemBinder<T, DB>)
-            : BindingRecyclerViewAdapter {
-        return bind(T::class.java, binder)
-    }
-
-    fun <T, DB: ViewDataBinding> bind(clazz: Class<T>, @LayoutRes layoutId: Int)
-            : BindingRecyclerViewAdapter {
-        binders.add(clazz to ItemBinder<T, DB>(layoutId))
-        return this
-    }
-
-    inline fun <reified T, DB: ViewDataBinding> bind(@LayoutRes layoutId: Int)
-            : BindingRecyclerViewAdapter {
-        return bind<T, DB>(T::class.java, layoutId)
-    }
-
-    fun bindSelf(binder: ItemBinder<*, *>): BindingRecyclerViewAdapter {
-        binders.add(binder.javaClass to binder)
-        return this
-    }
-
-    fun addBinderAsData(binder: ItemBinder<*, *>) {
-        if (binders.find { (clazz, _) -> clazz == binder.javaClass } == null) {
-            bindSelf(binder)
-        }
-        data.add(binder)
-    }
+    private var _data: MutableList<Any> = mutableListOf()
+    override var data: MutableList<Any>
+        get() = _data
+        set(value) { _data = value }
+    private val _binders: MutableList<Pair<Class<*>, BindingItemBinder<*, *>>> = mutableListOf()
+    override val binders: MutableList<Pair<Class<*>, BindingItemBinder<*, *>>>
+        get() = _binders
 
     override fun onCreateViewHolder(parent: ViewGroup, binderIndex: Int):
             BindingHolder<Any, ViewDataBinding> {
@@ -73,29 +41,21 @@ open class BindingRecyclerViewAdapter(private val variableId: Int)
 
     override fun getItemCount(): Int = data.size
 
-    override fun getItemViewType(position: Int): Int =
-            binders.indexOfFirst { (clazz, _) -> clazz == data[position].javaClass }
-
-    private fun <T: Any> getBinder(binderIndex: Int): ItemBinder<T, ViewDataBinding> =
-            binders[binderIndex].second as ItemBinder<T, ViewDataBinding>
-
-    private fun <T: Any> getBinderByData(data: T?): ItemBinder<T, ViewDataBinding>? =
-            binders.find {
-                (clazz, _) -> clazz == data?.javaClass
-            }?.second as? ItemBinder<T, ViewDataBinding>
-
-    private val ViewGroup.layoutInflater: LayoutInflater get() = LayoutInflater.from(context)
+    override fun getItemViewType(position: Int): Int = getBinderIndexByDataPosition(position)
 
     class BindingHolder<M, out T: ViewDataBinding>(
-            val binding: T,
+            override val binding: T,
             initBlock: BindingHolder<M, T>.() -> Unit
-    ): RecyclerView.ViewHolder(binding.root) {
+    ): RecyclerView.ViewHolder(binding.root), IBindingViewHolder<M, T> {
 
         init { initBlock() }
 
-        var currentItem: M? = null
+        private var _currentItem: M? = null
+        override var currentItem: M?
+            get() = _currentItem
+            set(value) { _currentItem = value }
 
-        val context: Context @get:JvmName("getContext") get() = itemView.context
+        override val context: Context get() = itemView.context
 
     }
 

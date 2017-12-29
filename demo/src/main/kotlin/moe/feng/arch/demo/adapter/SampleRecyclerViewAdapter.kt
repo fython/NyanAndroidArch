@@ -3,10 +3,10 @@ package moe.feng.arch.demo.adapter
 import moe.feng.common.arch.demo.BR
 import moe.feng.common.arch.demo.R
 import moe.feng.common.arch.demo.databinding.SampleItemIntegerBinding
-import moe.feng.common.arch.list.BindingListViewAdapter
+import moe.feng.common.arch.list.BindingRecyclerViewAdapter
 import moe.feng.common.arch.list.bind
 
-class SampleListAdapter : BindingListViewAdapter(BR.item) {
+class SampleRecyclerViewAdapter : BindingRecyclerViewAdapter(BR.item) {
 
     init {
         bind(StringBinder())
