@@ -1,6 +1,6 @@
 # NyanAndroidArch
 
-> 烧饼的 Android 应用基本框架库，享受 Data Binding 和 MVVM 模式的便利
+> 烧饼（ **自用** ）的 Android 应用基本框架库，享受 Data Binding 和 MVVM 模式的便利
 
 [![](https://jitpack.io/v/moe.feng/NyanAndroidArch.svg)](https://jitpack.io/#moe.feng/NyanAndroidArch)
 
@@ -56,6 +56,7 @@ dependencies {
     implementation 'moe.feng:xxxxxx-xxx-xxx:latest-version'
 }
 ```
+（如果找不到库尝试将 `moe.feng` 替换为 `moe.feng.NyanAndroidArch`）
 
 ## 贡献
 
