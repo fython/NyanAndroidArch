@@ -2,6 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'maven'
+
+group = 'moe.feng'
 
 android {
 	compileSdkVersion rootProject.ext.targetSdkVersion

@@ -2,7 +2,7 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 apply plugin: 'maven'
 
-group = 'moe.feng.NyanAndroidArch'
+group = 'moe.feng'
 
 sourceSets {
 	main.java.srcDirs += 'src/main/kotlin'
