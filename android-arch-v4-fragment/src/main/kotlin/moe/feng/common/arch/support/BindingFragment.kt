@@ -1,4 +1,4 @@
-package moe.feng.common.arch
+package moe.feng.common.arch.support
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding

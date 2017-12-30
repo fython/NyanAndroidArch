@@ -38,7 +38,9 @@ android {
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-	implementation project(':kotlin-common')
+	implementation project(':android-common')
+	implementation project(':android-arch-v4-fragment')
+	implementation project(':support-core-ui-extensions')
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
