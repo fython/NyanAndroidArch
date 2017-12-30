@@ -2,6 +2,8 @@
 
 > 烧饼的 Android 应用基本框架库，享受 Data Binding 和 MVVM 模式的便利
 
+[![](https://jitpack.io/v/moe.feng/NyanAndroidArch.svg)](https://jitpack.io/#moe.feng/NyanAndroidArch)
+
 [English Version (Not ready yet)]()
 
 ## 介绍
@@ -23,9 +25,12 @@
 本库被拆分为多个模块：
 
 - [kotlin-common](./kotlin-common) - Kotlin 语言扩展
-- [android-arch-base](./android-arch-base) - 基本框架（包含 Activity、Fragment 基类）
+- [android-common](./android-common) - Android 扩展
+- [android-arch-base](./android-arch-base) - 基本框架（包含 Activity 基类）
+- [android-arch-v4-fragment](./android-arch-base) - Support v4 Fragment 基类
 - [android-arch-base-lite](./android-arch-base-lite) - Lite 版基本框架，主要区别在于不使用 AppCompat v7，减少项目体积
-- [android-arch-listview](./android-arch-listview) - 列表框架（目前仅支持 RecyclerView）
+- [android-arch-listview](./android-arch-listview) - 列表框架（支持 RecyclerView 与 ListView）
+- [support-core-ui-extensions](./support-core-ui-extensions) - Support v4 core-ui 扩展
 
 （模块链接内将设有详细说明，目前尚未添加）
 
@@ -44,10 +49,11 @@ allprojects {
 再在应用 Module 的 `build.gradle` 中按需声明要依赖的模块：
 ```gradle
 dependencies {
-    implementation 'moe.feng:kotlin-common:latest-version'
+    implementation 'moe.feng:android-common:latest-version'
     implementation 'moe.feng:android-arch-base:latest-version'
     // implementation 'moe.feng:android-arch-base-lite:latest-version'
     implementation 'moe.feng:android-arch-listview:latest-version'
+    implementation 'moe.feng:xxxxxx-xxx-xxx:latest-version'
 }
 ```
 
