@@ -10,14 +10,14 @@ open class BindingRecyclerViewAdapter(private val variableId: Int)
     : RecyclerView.Adapter<BindingRecyclerViewAdapter.BindingHolder<Any, ViewDataBinding>>(), IBindingAdapter {
 
     private var _data: MutableList<Any> = mutableListOf()
-    override var data: MutableList<Any>
+    final override var data: MutableList<Any>
         get() = _data
         set(value) { _data = value }
     private val _binders: MutableList<Pair<Class<*>, BindingItemBinder<*, *>>> = mutableListOf()
-    override val binders: MutableList<Pair<Class<*>, BindingItemBinder<*, *>>>
+    final override val binders: MutableList<Pair<Class<*>, BindingItemBinder<*, *>>>
         get() = _binders
 
-    override fun onCreateViewHolder(parent: ViewGroup, binderIndex: Int):
+    final override fun onCreateViewHolder(parent: ViewGroup, binderIndex: Int):
             BindingHolder<Any, ViewDataBinding> {
         val binder = getBinder<Any>(binderIndex)
         val binding: ViewDataBinding = DataBindingUtil.inflate(
@@ -25,23 +25,23 @@ open class BindingRecyclerViewAdapter(private val variableId: Int)
         return BindingHolder(binding, binder::onViewHolderCreated)
     }
 
-    override fun onBindViewHolder(holder: BindingHolder<Any, ViewDataBinding>, position: Int) {
+    final override fun onBindViewHolder(holder: BindingHolder<Any, ViewDataBinding>, position: Int) {
         holder.currentItem = data[position]
         holder.binding.setVariable(variableId, data[position])
         holder.binding.executePendingBindings()
         getBinderByData(data[position])?.onBindViewHolder(holder, data[position], position)
     }
 
-    override fun onViewRecycled(holder: BindingHolder<Any, ViewDataBinding>?) {
+    final override fun onViewRecycled(holder: BindingHolder<Any, ViewDataBinding>?) {
         super.onViewRecycled(holder)
         if (holder != null) {
             getBinderByData(holder.currentItem)?.onViewRecycled(holder)
         }
     }
 
-    override fun getItemCount(): Int = data.size
+    final override fun getItemCount(): Int = data.size
 
-    override fun getItemViewType(position: Int): Int = getBinderIndexByDataPosition(position)
+    final override fun getItemViewType(position: Int): Int = getBinderIndexByDataPosition(position)
 
     fun getItemSpanSize(position: Int): Int =
             getBinderByDataPosition<Any>(position)?.getItemSpanSize(data[position], position) ?: 1
