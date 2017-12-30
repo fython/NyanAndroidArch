@@ -6,6 +6,7 @@ import android.databinding.BindingAdapter
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.widget.ListAdapter
 import android.widget.ListView
 
 private const val TAG = "DataBindingUtils"
@@ -79,6 +80,16 @@ fun setAutoBindItemsSpan(view: RecyclerView, value: Boolean) {
         throw IllegalArgumentException("Unsupported layout manager." +
                 " Please use GridLayoutManager instead.")
     }
+}
+
+@BindingAdapter("bind:listAdapter")
+fun setListAdapter(view: ListView, adapter: ListAdapter) {
+    view.adapter = adapter
+}
+
+@BindingAdapter("bind:listAdapter")
+fun setListAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
+    view.adapter = adapter
 }
 
 interface ISpanSizeLookup {

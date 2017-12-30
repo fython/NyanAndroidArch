@@ -15,4 +15,10 @@ class SampleListAdapter : BindingListViewAdapter(BR.item) {
         bindSelf(AnotherSimpleCardBinder.INSTANCE)
     }
 
+    companion object {
+
+        @JvmStatic fun newInstance(): SampleListAdapter = SampleListAdapter()
+
+    }
+
 }

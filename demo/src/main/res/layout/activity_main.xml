@@ -6,6 +6,8 @@
     tools:context="moe.feng.arch.demo.MainActivity">
     <data>
         <variable name="viewModel" type="moe.feng.arch.demo.MainViewModel"/>
+        <import type="moe.feng.arch.demo.adapter.SampleListAdapter"/>
+        <import type="moe.feng.arch.demo.adapter.SampleRecyclerViewAdapter"/>
     </data>
     <LinearLayout
         android:orientation="vertical"
@@ -47,6 +49,7 @@
             bind:items="@{viewModel.listItems}"
             bind:spanCount="2"
             bind:autoBindItemsSpan="@{true}"
+            bind:listAdapter="@{SampleRecyclerViewAdapter.newInstance()}"
             app:layoutManager="android.support.v7.widget.GridLayoutManager"/>
             <!-- bind:itemsSpan="@{(pos) -> (pos > 1 ? 1 : 2)}" -->
             <!-- bind:itemsSpan="@{viewModel::getItemSpanSize}" -->
@@ -58,6 +61,7 @@
             android:layout_weight="1"
             android:listSelector="@android:color/transparent"
             android:divider="@null"
+            bind:listAdapter="@{SampleListAdapter.newInstance()}"
             bind:items="@{viewModel.listItems}"/>
 
     </LinearLayout>
