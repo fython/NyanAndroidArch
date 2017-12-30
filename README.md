@@ -24,7 +24,6 @@
 
 本库被拆分为多个模块：
 
-- [kotlin-common](./kotlin-common) - Kotlin 语言扩展
 - [android-common](./android-common) - Android 扩展
 - [android-arch-base](./android-arch-base) - 基本框架（包含 Activity 基类）
 - [android-arch-v4-fragment](./android-arch-base) - Support v4 Fragment 基类

@@ -30,13 +30,12 @@ android {
 
 	sourceSets {
 		main.java.srcDirs += 'src/main/kotlin'
+		test.java.srcDirs += 'src/test/kotlin'
 	}
 }
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-	implementation project(':kotlin-common')
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 }

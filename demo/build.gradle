@@ -39,7 +39,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-	implementation project(':kotlin-common')
 	implementation project(':android-common')
 	implementation project(':android-arch-base')
 	implementation project(':android-arch-listview')

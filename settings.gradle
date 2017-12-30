@@ -1,5 +1,4 @@
 include ':demo'
-include ':kotlin-common'
 include ':android-common'
 include ':android-arch-base'
 include ':android-arch-base-lite'
