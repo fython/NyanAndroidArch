@@ -43,6 +43,9 @@ open class BindingRecyclerViewAdapter(private val variableId: Int)
 
     override fun getItemViewType(position: Int): Int = getBinderIndexByDataPosition(position)
 
+    fun getItemSpanSize(position: Int): Int =
+            getBinderByDataPosition<Any>(position)?.getItemSpanSize(data[position], position) ?: 1
+
     class BindingHolder<M, out T: ViewDataBinding>(
             override val binding: T,
             initBlock: BindingHolder<M, T>.() -> Unit

@@ -17,6 +17,10 @@ open class SimpleCardBinder : BindingItemBinder<SimpleCardBinder, SampleItemCard
         Log.d(TAG, "onViewHolderCreated")
     }
 
+    override fun getItemSpanSize(data: SimpleCardBinder, position: Int): Int {
+        return 2
+    }
+
     companion object {
 
         val INSTANCE: SimpleCardBinder by singleton()

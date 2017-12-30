@@ -13,4 +13,6 @@ interface IBindingViewHolder<M, out T: ViewDataBinding> {
 
     val binding: T
 
+    fun getItemSpanSize(): Int = 1
+
 }

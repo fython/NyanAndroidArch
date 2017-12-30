@@ -45,7 +45,11 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             bind:items="@{viewModel.listItems}"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+            bind:spanCount="2"
+            bind:autoBindItemsSpan="@{true}"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"/>
+            <!-- bind:itemsSpan="@{(pos) -> (pos > 1 ? 1 : 2)}" -->
+            <!-- bind:itemsSpan="@{viewModel::getItemSpanSize}" -->
 
         <ListView
             android:id="@+id/list_view"

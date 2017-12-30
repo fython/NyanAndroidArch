@@ -1,6 +1,7 @@
 @file:JvmName("RecyclerViewUtils")
 package moe.feng.common.arch.list
 
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import moe.feng.common.arch.list.callback.OnListLoadMoreListener
 import moe.feng.common.arch.list.internal.OnRVLoadMoreListener
@@ -17,4 +18,15 @@ fun RecyclerView.onLoadMore(action: () -> Unit) {
             action.invoke()
         }
     }))
+}
+
+fun GridLayoutManager.setSpanSizeLookup(spanSizeLookup: ISpanSizeLookup) {
+    this.spanSizeLookupBy(spanSizeLookup::getSpanSize)
+}
+
+@JvmName("setSpanSizeLookupCalculator")
+fun GridLayoutManager.spanSizeLookupBy(calculator: (position: Int) -> Int) {
+    this.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+        override fun getSpanSize(position: Int): Int = calculator(position)
+    }
 }

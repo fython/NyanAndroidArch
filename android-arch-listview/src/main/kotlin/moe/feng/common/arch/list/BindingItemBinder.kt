@@ -17,6 +17,8 @@ open class BindingItemBinder<M, in T: ViewDataBinding>(@LayoutRes val layoutId: 
 
     }
 
+    open fun getItemSpanSize(data: M, position: Int) = 1
+
     open fun onViewRecycled(holder: IBindingViewHolder<M, T>) {
 
     }

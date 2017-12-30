@@ -26,11 +26,14 @@ class MainViewModel {
                         123456,
                         "Hello,",
                         "world!",
+                        AnotherSimpleCardBinder.INSTANCE,
                         "/eat@RikkaW",
                         *(1..20).asIterable().map { it * it }.toTypedArray(),
                         "!"
                 )
         )
     }
+
+    fun getItemSpanSize(position: Int): Int = if (position > 1) 1 else 2
 
 }
