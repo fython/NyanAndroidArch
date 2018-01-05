@@ -6,6 +6,7 @@ buildscript {
 		androidSupportLibVersion = '27.0.2'
 		minSdkVersion = 21
 		targetSdkVersion = 27
+		kotlinxCoroutinesVersion = '0.21'
 
 		// Version
 		versionName = '0.1.0'

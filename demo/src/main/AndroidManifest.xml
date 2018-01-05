@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="moe.feng.common.arch.demo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="moe.feng.arch.demo.DemoApplication"
         android:allowBackup="true"

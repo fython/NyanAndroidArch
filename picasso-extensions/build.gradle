@@ -30,19 +30,17 @@ android {
 
 	sourceSets {
 		main.java.srcDirs += 'src/main/kotlin'
-		test.java.srcDirs += 'src/test/kotlin'
 	}
 }
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-	compileOnly "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion"
-}
+	implementation project(':android-common')
 
-kotlin {
-	experimental {
-		coroutines "enable"
-	}
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+	implementation "com.squareup.picasso:picasso:2.5.2"
+
+	kapt 'com.android.databinding:compiler:3.0.1'
 }

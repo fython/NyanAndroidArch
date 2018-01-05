@@ -42,8 +42,10 @@ dependencies {
 	implementation project(':android-common')
 	implementation project(':android-arch-base')
 	implementation project(':android-arch-listview')
+	implementation project(':picasso-extensions')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion"
 
     implementation "com.android.support:appcompat-v7:$androidSupportLibVersion"
 	implementation "com.android.support:recyclerview-v7:$androidSupportLibVersion"
@@ -55,4 +57,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+kotlin {
+	experimental {
+		coroutines "enable"
+	}
 }

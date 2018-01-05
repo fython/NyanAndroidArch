@@ -13,6 +13,7 @@ class SampleRecyclerViewAdapter : BindingRecyclerViewAdapter(BR.item) {
     init {
         bind(StringBinder())
         bind<Int, SampleItemIntegerBinding>(R.layout.sample_item_integer)
+        bind(PicassoDemoItemBinder())
         bindSelf(SimpleCardBinder.INSTANCE)
         bindSelf(AnotherSimpleCardBinder.INSTANCE)
     }
