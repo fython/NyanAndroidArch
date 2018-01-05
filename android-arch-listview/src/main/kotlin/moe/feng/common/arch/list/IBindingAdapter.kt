@@ -28,7 +28,7 @@ interface IBindingAdapter {
     }
 
     fun addBinderAsData(binder: BindingItemBinder<*, *>) {
-        if (binders.find { (clazz, _) -> clazz == binder.javaClass } == null) {
+        if (binders.find { (clazz, _) -> clazz.isInstance(binder) } == null) {
             bindSelf(binder)
         }
         data.add(binder)
@@ -38,16 +38,16 @@ interface IBindingAdapter {
             binders[binderIndex].second as BindingItemBinder<T, ViewDataBinding>
 
     fun getBinderIndexByDataPosition(position: Int): Int =
-            binders.indexOfFirst { (clazz, _) -> clazz == data[position].javaClass }
+            binders.indexOfFirst { (clazz, _) -> clazz.isInstance(data[position]) }
 
     fun <T: Any> getBinderByDataPosition(position: Int): BindingItemBinder<T, ViewDataBinding>? =
             binders.find {
-                (clazz, _) -> clazz == data[position].javaClass
+                (clazz, _) -> clazz.isInstance(data[position])
             }?.second as? BindingItemBinder<T, ViewDataBinding>
 
     fun <T: Any> getBinderByData(data: T?): BindingItemBinder<T, ViewDataBinding>? =
             binders.find {
-                (clazz, _) -> clazz == data?.javaClass
+                (clazz, _) -> clazz.isInstance(data)
             }?.second as? BindingItemBinder<T, ViewDataBinding>
 
 }
