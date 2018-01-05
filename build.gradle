@@ -7,6 +7,7 @@ buildscript {
 		minSdkVersion = 21
 		targetSdkVersion = 27
 		kotlinxCoroutinesVersion = '0.21'
+		kotlinxSerializationVersion = '0.4'
 
 		// Version
 		versionName = '0.1.0'
@@ -14,15 +15,19 @@ buildscript {
 
 		// Third-party libs version
 		fontProviderApiVersion = '10'
+		okhttp3Version = '3.9.1'
+		gsonVersion = '2.8.2'
 	}
 
     repositories {
         google()
         jcenter()
+	    maven { url "https://kotlin.bintray.com/kotlinx" }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+	    classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:$kotlinxSerializationVersion"
     }
 }
 
@@ -30,6 +35,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+	    maven { url "https://kotlin.bintray.com/kotlinx" }
     }
 }
 

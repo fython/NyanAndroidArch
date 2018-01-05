@@ -42,6 +42,7 @@ dependencies {
 	implementation project(':android-common')
 	implementation project(':android-arch-base')
 	implementation project(':android-arch-listview')
+	implementation project(':android-arch-network-client')
 	implementation project(':picasso-extensions')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
