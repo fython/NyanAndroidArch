@@ -2,6 +2,7 @@
     package="moe.feng.common.arch.demo">
 
     <application
+        android:name="moe.feng.arch.demo.DemoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
