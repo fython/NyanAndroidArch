@@ -1,5 +1,6 @@
 package moe.feng.arch.demo
 
+import android.Manifest
 import android.os.Bundle
 import moe.feng.common.arch.BindingActivity
 import moe.feng.common.arch.demo.R
@@ -15,6 +16,12 @@ class MainActivity: BindingActivity<ActivityMainBinding>() {
         binding.viewModel = viewModel
         binding.init()
         viewModel.mockData()
+
+        runWithPermission(Manifest.permission.ACCESS_NETWORK_STATE, onSuccess = {
+
+        }, onFailed = {
+
+        })
     }
 
     private fun ActivityMainBinding.init() {
