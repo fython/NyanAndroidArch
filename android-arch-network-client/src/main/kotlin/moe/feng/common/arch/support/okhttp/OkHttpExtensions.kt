@@ -1,4 +1,3 @@
-@file:JvmName("OkHttpUtils")
 package moe.feng.common.arch.support.okhttp
 
 import kotlinx.coroutines.experimental.CommonPool

@@ -1,4 +1,3 @@
-@file:JvmName("GsonUtils")
 package moe.feng.common.arch.support.gson
 
 import com.google.gson.Gson

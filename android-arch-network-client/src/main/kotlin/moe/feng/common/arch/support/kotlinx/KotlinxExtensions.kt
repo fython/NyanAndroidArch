@@ -1,4 +1,3 @@
-@file:JvmName("KotlinxUtils")
 package moe.feng.common.arch.support.kotlinx
 
 import kotlinx.serialization.*
