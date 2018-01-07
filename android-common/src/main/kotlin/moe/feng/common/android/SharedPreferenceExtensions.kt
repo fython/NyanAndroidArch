@@ -19,7 +19,6 @@ abstract class SharedPreferencesProvider
 
 }
 
-@JvmName("SharedPreferencesUtils")
 fun <T: SharedPreferencesProvider> Context.initSharedPreferencesProvider(clazz: Class<T>): T {
     return getInstance(clazz) {
         clazz.getDeclaredConstructor(Context::class.java)
@@ -28,17 +27,14 @@ fun <T: SharedPreferencesProvider> Context.initSharedPreferencesProvider(clazz: 
     }
 }
 
-@JvmName("SharedPreferencesUtils")
 inline fun <reified T: SharedPreferencesProvider> Context.initSharedPreferencesProvider(): T {
     return initSharedPreferencesProvider(T::class.java)
 }
 
-@JvmName("SharedPreferencesUtils")
 inline fun <reified T: SharedPreferencesProvider> getSharedPreferencesProvider(): T {
     return getInstance()
 }
 
-@JvmName("SharedPreferencesUtils")
 operator fun SharedPreferences.get(key: String): SharedPreferencesGetter?
         = if (contains(key)) SharedPreferencesGetter(this, key) else null
 
@@ -51,26 +47,19 @@ class SharedPreferencesGetter internal constructor(internal val sp: SharedPrefer
     fun asStringSet(defValue: Set<String> = emptySet()): Set<String> = sp.getStringSet(key, defValue)
 }
 
-@JvmName("SharedPreferencesUtils")
 fun SharedPreferencesGetter?.asString(defValue: String? = null): String?
         = this?.sp?.getString(key, defValue) ?: defValue
-@JvmName("SharedPreferencesUtils")
 fun SharedPreferencesGetter?.asInt(defValue: Int = 0): Int
         = this?.sp?.getInt(key, defValue) ?: defValue
-@JvmName("SharedPreferencesUtils")
 fun SharedPreferencesGetter?.asBoolean(defValue: Boolean = false): Boolean
         = this?.sp?.getBoolean(key, defValue) ?: defValue
-@JvmName("SharedPreferencesUtils")
 fun SharedPreferencesGetter?.asLong(defValue: Long = 0): Long
         = this?.sp?.getLong(key, defValue) ?: defValue
-@JvmName("SharedPreferencesUtils")
 fun SharedPreferencesGetter?.asFloat(defValue: Float = 0F): Float
         = this?.sp?.getFloat(key, defValue) ?: defValue
-@JvmName("SharedPreferencesUtils")
 fun SharedPreferencesGetter?.asStringSet(defValue: Set<String> = emptySet()): Set<String>
         = this?.sp?.getStringSet(key, defValue) ?: defValue
 
-@JvmName("SharedPreferencesUtils")
 operator fun SharedPreferences.set(key: String, value: Any?) {
     when (value) {
         is String -> edit().putString(key, value).apply()
