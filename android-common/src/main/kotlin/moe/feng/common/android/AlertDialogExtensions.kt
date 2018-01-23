@@ -4,6 +4,7 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
+import android.app.Fragment
 import android.content.DialogInterface
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -22,6 +23,14 @@ fun Activity.buildAlertDialog(process: AlertDialog.Builder.() -> Unit) : AlertDi
     builder.process()
     return builder.create()
 }
+
+/**
+ * Build AlertDialog in Fragment
+ *
+ * @param process The process of building AlertDialog
+ * @see android.app.AlertDialog
+ */
+fun Fragment.buildAlertDialog(process: AlertDialog.Builder.() -> Unit) = activity.buildAlertDialog(process)
 
 var AlertDialog.Builder.title : String
     get() { throw NoSuchMethodException("Title getter is not supported")}

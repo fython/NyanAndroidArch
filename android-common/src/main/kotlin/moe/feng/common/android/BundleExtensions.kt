@@ -1,6 +1,5 @@
 package moe.feng.common.android
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder

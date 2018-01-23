@@ -3,6 +3,7 @@ package moe.feng.common.arch
 import android.annotation.TargetApi
 import android.app.Activity
 import android.app.Dialog
+import android.app.Fragment
 import android.content.DialogInterface
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -17,11 +18,28 @@ import android.widget.Button
  * @param process The process of building AlertDialog
  * @see android.app.AlertDialog
  */
-fun Activity.buildAlertDialog(process: AlertDialog.Builder.() -> Unit) : AlertDialog {
+fun Activity.buildAlertDialogV7(process: AlertDialog.Builder.() -> Unit) : AlertDialog {
     val builder = AlertDialog.Builder(this)
     builder.process()
     return builder.create()
 }
+
+/**
+ * Build AlertDialog in Fragment
+ *
+ * @param process The process of building AlertDialog
+ * @see android.app.AlertDialog
+ */
+fun Fragment.buildAlertDialogV7(process: AlertDialog.Builder.() -> Unit) = activity.buildAlertDialogV7(process)
+
+
+/**
+ * Build AlertDialog in Fragment
+ *
+ * @param process The process of building AlertDialog
+ * @see android.app.AlertDialog
+ */
+fun android.support.v4.app.Fragment.buildAlertDialogV7(process: AlertDialog.Builder.() -> Unit) = activity?.buildAlertDialogV7(process)
 
 var AlertDialog.Builder.title : String
     get() { throw NoSuchMethodException("Title getter is not supported")}

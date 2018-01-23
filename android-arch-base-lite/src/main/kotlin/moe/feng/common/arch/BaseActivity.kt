@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.support.annotation.LayoutRes
-import android.support.annotation.RequiresApi
 import android.view.MenuItem
 import android.view.View
 
